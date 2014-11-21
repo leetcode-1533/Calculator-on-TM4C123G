@@ -1,0 +1,13 @@
+.git/
+.launches/
+.settings/
+Debug/
+
+
+.ccsproject
+.cproject
+.project
+*.cmd
+macros.ini_initial
+target_config.ccxml
+startup_ccs.c
