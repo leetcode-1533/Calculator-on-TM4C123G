@@ -13,11 +13,12 @@
 #define GPIO_PORTF_DATA_R       (*((volatile unsigned long *)0x400253FC))
 
 
+
 #define SYSCTL_RCGC2_R			(*((volatile unsigned long *)0x400FE108))
 
 #include "timer.h"
 #include "pad.h"
-//#include "debug.h"
+#include "debug.h"
 #include "lcd.h"
 
 
@@ -25,7 +26,7 @@ int main(void) {
 	control();
 	sys_init();
 
-	//ConfigureUART();
+	ConfigureUART();
 	pad_init();
 	lcd_eight_init();
 
@@ -37,23 +38,12 @@ int main(void) {
 
 	char cha;
 	int test = 0;
+
 	while(1)
 	{
 		cha = pad_value();
-		if (cha==0)
-		{
-			lcd_write_eight_com(0x01);
-			continue;
-		}
-		if (test<=8)
-		{
-		cha = pad_value();
-		loc_write_eight_char(cha);
-		test ++;
-		}
-		else{
-			test = 0;
-			lcd_write_eight_com(0x01);
-		}
+		UARTprintf("%c\n",cha);
 	}
+
+
 }
