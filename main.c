@@ -18,7 +18,7 @@
 
 #include "timer.h"
 #include "pad.h"
-#include "debug.h"
+//#include "debug.h"
 #include "lcd.h"
 
 
@@ -26,7 +26,7 @@ int main(void) {
 	control();
 	sys_init();
 
-	ConfigureUART();
+	//ConfigureUART();
 	pad_init();
 	lcd_eight_init();
 
@@ -41,9 +41,18 @@ int main(void) {
 
 	while(1)
 	{
-		cha = pad_value();
-		UARTprintf("%c\n",cha);
+	//	cha = pad_value();
+		lcd_write_eight_char(0xA2);
+	//	UARTprintf("%c\n",cha);
+//		if (test<=8){
+//			lcd_write_eight_char(cha);
+//			test++;
+//		}
+//		else{
+//			lcd_write_eight_com(0x01);
+//			lcd_write_eight_com(0x02);
+//			test = 0;
+//		}
 	}
-
-
+	return 0;
 }

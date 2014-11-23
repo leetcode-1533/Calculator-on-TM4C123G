@@ -49,7 +49,7 @@
 #define GPIO_PORTC_PCTL_R	(*((volatile unsigned long *)0x4000652C))
 
 void en_pulse(void);
-void en_eight_pulse(void);
+
 
 void lcd_init(void);
 void lcd_eight_init(void);
@@ -58,7 +58,7 @@ void lcd_write_com(unsigned long com);
 void lcd_write_eight_com(unsigned long com);
 
 void lcd_write_char(unsigned long cha);
-void loc_write_eight_char(unsigned long cha);
+void lcd_write_eight_char(unsigned long cha);
 
 
 #endif /* LCD_H_ */

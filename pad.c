@@ -66,14 +66,11 @@ int pad_xy(int * loc){
 	more_delay(1);
 	int temp = pad_xvalue();
 	if(temp != -1){
-
 		more_delay(1);
 		temp = pad_xvalue();
 		if(temp != -1){
 			loc[0] = temp;
-			more_delay(1);
 			temp = pad_yvalue();
-
 			if(temp  != -1)
 			{
 			loc[1] = temp;
