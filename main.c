@@ -31,8 +31,10 @@ int main(void) {
 
 	lcd_write_eight_com(0x38);
 	lcd_write_eight_com(0x0E);
+	lcd_write_eight_com(0x06);
 
 	lcd_write_eight_com(0x01);
+	lcd_write_eight_char(0x48);
 
 
 

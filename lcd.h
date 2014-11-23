@@ -58,6 +58,7 @@ void lcd_write_com(unsigned long com);
 void lcd_write_eight_com(unsigned long com);
 
 void lcd_write_char(unsigned long cha);
+void loc_write_eight_char(unsigned long cha);
 
 
 #endif /* LCD_H_ */
