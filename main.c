@@ -28,31 +28,21 @@ int main(void) {
 
 	//ConfigureUART();
 	pad_init();
-	lcd_eight_init();
+	lcd_init();
 
-	lcd_write_eight_com(0x38);
-	lcd_write_eight_com(0x0E);
-	lcd_write_eight_com(0x06);
+	lcd_write_com(0x20);
+	lcd_write_com(0x0E);
+	lcd_write_com(0x06);
 
-	lcd_write_eight_com(0x01);
-
-	char cha;
+	lcd_write_com(0x01);
+	lcd_write_char(0x48);
+	lcd_write_char(0x48);
 	int test = 0;
-
-	while(1)
-	{
-	//	cha = pad_value();
-		lcd_write_eight_char(0xA2);
-	//	UARTprintf("%c\n",cha);
-//		if (test<=8){
-//			lcd_write_eight_char(cha);
-//			test++;
-//		}
-//		else{
-//			lcd_write_eight_com(0x01);
-//			lcd_write_eight_com(0x02);
-//			test = 0;
-//		}
+	while(1){
+		for(test=0;test<=8;test++){
+			lcd_write_char(0x48);
+		}
+		lcd_write_com(0x01);
+		lcd_write_com(0x02);
 	}
-	return 0;
 }

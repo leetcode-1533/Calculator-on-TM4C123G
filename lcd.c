@@ -98,26 +98,26 @@ void lcd_write_eight_com(unsigned long com){
 
 void lcd_write_com(unsigned long com){
 	GPIO_PORTB_DATA_R = (com & 0xF0);
-	RS_3 = 0;
+	RS_0 = 0;
 	en_pulse();
 
 	us_delay(100);
 
 	GPIO_PORTB_DATA_R = ((com & 0x0F)<<4);
-	RS_3 = 0;
+	RS_0 = 0;
 	en_pulse();
 
 	ms_delay(5);
 }
 void lcd_write_char(unsigned long cha){
 	GPIO_PORTB_DATA_R = cha & 0xF0;
-	RS_3 = 0x8;
+	RS_0 = 0x01;
 	en_pulse();
 
 	us_delay(100);
 
 	GPIO_PORTB_DATA_R = ((cha & 0x0F)<<4);
-	RS_3 = 0x8;
+	RS_0 = 0x01;
 	en_pulse();
 
 	ms_delay(5);
