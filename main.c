@@ -27,26 +27,17 @@ int main(void) {
 
 	//ConfigureUART();
 	pad_init();
-	lcd_init();
+	lcd_eight_init();
 
-	lcd_write_char('a');
-	lcd_write_char('3');
-	lcd_write_char('4');
-	lcd_write_char('t');
+	lcd_write_eight_com(0x38);
+	lcd_write_eight_com(0x0E);
 
-
+	lcd_write_eight_com(0x01);
 
 
 
-
-
-    char temp;
 	while(1)
 	{
-		lcd_write_char('t');
 
-		temp = pad_value();
-
-	    more_delay(1);
 	}
 }

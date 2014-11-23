@@ -8,8 +8,6 @@
 #include "timer.h"
 
 void pad_init(void){
-
-
 	int delay;
 
 	SYSCTL_RCGC2_R |= 0x18;
@@ -19,13 +17,13 @@ void pad_init(void){
 	GPIO_PORTD_CR_R |= 0x0F;
 	GPIO_PORTD_AMSEL_R &= ~0x0F;
 	GPIO_PORTD_AFSEL_R &= ~0x0F;
-	GPIO_PORTD_PCTL_R &= ~0x0F;
+	GPIO_PORTD_PCTL_R &= ~0xFFFF;
 
 	GPIO_PORTE_LOCK_R = 0x4C4F434B;
 	GPIO_PORTE_CR_R |= 0x0F;
 	GPIO_PORTE_AMSEL_R &= ~0x0F;
 	GPIO_PORTE_AFSEL_R &= ~0x0F;
-	GPIO_PORTE_PCTL_R &= ~0x0F;
+	GPIO_PORTE_PCTL_R &= ~0xFFFF;
 
 	GPIO_PORTE_DEN_R |= 0x0F;
 	GPIO_PORTD_DEN_R |= 0x0F;

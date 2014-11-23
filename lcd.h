@@ -23,6 +23,10 @@
 #define EN_2 (*((volatile unsigned long *)0x40004010)) //PIN A2
 #define RS_3 (*((volatile unsigned long *)0x40004020)) //PIN A3
 
+
+#define EN_1 (*((volatile unsigned long *)0x40005008)) //PIN B1
+#define RS_0 (*((volatile unsigned long *)0x40005004)) //PIN B0
+
 #define GPIO_PORTB_DATA_R 	(*((volatile unsigned long *)0x400053FC))
 #define GPIO_PORTB_DIR_R 	(*((volatile unsigned long *)0x40005400))
 #define GPIO_PORTB_AFSEL_R 	(*((volatile unsigned long *)0x40005420))
@@ -30,7 +34,7 @@
 #define GPIO_PORTB_DEN_R 	(*((volatile unsigned long *)0x4000551C))
 #define GPIO_PORTB_CR_R 	(*((volatile unsigned long *)0x40005524))
 #define GPIO_PORTB_AMSEL_R 	(*((volatile unsigned long *)0x40005528))
-#define GPIO_PORTB_LOCK_R    (*((volatile unsigned long *)0x40005520))
+#define GPIO_PORTB_LOCK_R   (*((volatile unsigned long *)0x40005520))
 #define GPIO_PORTB_PCTL_R	(*((volatile unsigned long *)0x4000552C))
 
 
@@ -43,11 +47,15 @@
 #define GPIO_PORTC_AMSEL_R 	(*((volatile unsigned long *)0x40006528))
 #define GPIO_PORTC_LOCK_R   (*((volatile unsigned long *)0x40006520))
 #define GPIO_PORTC_PCTL_R	(*((volatile unsigned long *)0x4000652C))
-void lcd_init(void);
 
-void lcd_8_init(void);
+void en_pulse(void);
+void en_eight_pulse(void);
+
+void lcd_init(void);
+void lcd_eight_init(void);
 
 void lcd_write_com(unsigned long com);
+void lcd_write_eight_com(unsigned long com);
 
 void lcd_write_char(unsigned long cha);
 
