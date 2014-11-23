@@ -62,6 +62,10 @@ void lcd_init(void){
 
 }
 
+void lcd_8_init(void){
+
+}
+
 void lcd_write_com(unsigned long com){
 	GPIO_PORTB_DATA_R = (com & 0xF0);
 	RS_3 = 0;
