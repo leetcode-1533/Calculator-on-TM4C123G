@@ -34,12 +34,26 @@ int main(void) {
 	lcd_write_eight_com(0x06);
 
 	lcd_write_eight_com(0x01);
-	lcd_write_eight_char(0x48);
 
-
-
+	char cha;
+	int test = 0;
 	while(1)
 	{
-
+		cha = pad_value();
+		if (cha==0)
+		{
+			lcd_write_eight_com(0x01);
+			continue;
+		}
+		if (test<=8)
+		{
+		cha = pad_value();
+		loc_write_eight_char(cha);
+		test ++;
+		}
+		else{
+			test = 0;
+			lcd_write_eight_com(0x01);
+		}
 	}
 }

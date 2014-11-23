@@ -140,7 +140,7 @@ void lcd_write_char(unsigned long cha){
 
 	ms_delay(5);
 }
-void lcd_write_eight_char(unsigned long cha){
+void loc_write_eight_char(unsigned long cha){
 	GPIO_PORTB_DATA_R = (cha & 0xF0);
 	GPIO_PORTC_DATA_R = ((cha & 0x0F)<<4);
 	RS_0 = 0x01;
