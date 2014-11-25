@@ -37,10 +37,17 @@ int main(void) {
 	lcd_write_com(0x01);
 	lcd_write_char(0x48);
 	lcd_write_char(0x48);
+
 	int test = 0;
+	unsigned char input;
 	while(1){
 		for(test=0;test<=8;test++){
-			lcd_write_char(0x48);
+			input = pad_value();
+			if(input == 0){
+				test --;
+				continue;
+			}
+			lcd_write_char(input);
 		}
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);

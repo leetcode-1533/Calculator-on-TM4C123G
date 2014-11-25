@@ -6,6 +6,7 @@
  */
 #include "pad.h"
 #include "timer.h"
+#include "debug.h"
 
 void pad_init(void){
 	int delay;
@@ -65,20 +66,14 @@ int pad_yvalue(void){
 int pad_xy(int * loc){
 	more_delay(1);
 	int temp = pad_xvalue();
-	if(temp != -1){
-		more_delay(1);
+	if(temp != -1)
+	{
 		temp = pad_xvalue();
 		if(temp != -1){
 			loc[0] = temp;
 			temp = pad_yvalue();
-			if(temp  != -1)
-			{
 			loc[1] = temp;
 			return 0;
-			}
-			else{
-				return -1;
-			}
 		}
 		else{
 			return -1;
@@ -87,13 +82,17 @@ int pad_xy(int * loc){
 	else{
 		return -1;
 	}
+
+
 }
 
 unsigned char pad_value(void){
 	int loc[2] = {0};
+	const char mat[][4] ={{'1','2','3','a'},{'4','5','6','b'},{'7','8','9','c'},{'*','0','#','d'}};
+
 	if(pad_xy(loc)==0)
 	{
-		const char mat[][4] ={{'1','2','3','a'},{'4','5','6','b'},{'7','8','9','c'},{'*','0','#','d'}};
+	//	UARTprintf("pad_value(): %c",mat[loc[0]][loc[1]]);
 		return mat[loc[0]][loc[1]];
 	}
 	else{
