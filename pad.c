@@ -28,13 +28,19 @@ void pad_init(void){
 
 	GPIO_PORTE_DEN_R |= 0x0F;
 	GPIO_PORTD_DEN_R |= 0x0F;
+	GPIO_PORTE_PDR_R |= 0x0F;
+	GPIO_PORTD_PDR_R |= 0x0F;
+	GPIO_PORTD_DIR_R |= 0x0F;
+	GPIO_PORTE_DIR_R |= 0x0F;
+	GPIO_PORTE_DATA_R = 0;
+	GPIO_PORTD_DATA_R = 0;
 }
 
 int pad_xvalue(void){
 
 	GPIO_PORTE_DIR_R &= ~0x0F;
-	GPIO_PORTD_PDR_R &= ~0x0F;
-	GPIO_PORTE_PDR_R |= 0x0F;
+
+
 
 	GPIO_PORTD_DIR_R |= 0x0F;
 	GPIO_PORTD_DATA_R |= 0x0F;
@@ -50,8 +56,8 @@ int pad_xvalue(void){
 int pad_yvalue(void){
 
 	GPIO_PORTD_DIR_R &= ~0x0F;
-	GPIO_PORTE_PDR_R &= ~0x0F;
-	GPIO_PORTD_PDR_R |= 0x0F;
+
+
 
 	GPIO_PORTE_DIR_R |= 0x0F;
 	GPIO_PORTE_DATA_R |= 0x0F;

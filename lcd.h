@@ -20,12 +20,10 @@
 #define GPIO_PORTA_LOCK_R   (*((volatile unsigned long *)0x40004520))
 #define GPIO_PORTA_PCTL_R	(*((volatile unsigned long *)0x4000452C))
 
-#define EN_2 (*((volatile unsigned long *)0x40004010)) //PIN A2
-#define RS_3 (*((volatile unsigned long *)0x40004020)) //PIN A3
+#define RS_2 (*((volatile unsigned long *)0x40004010)) //PIN A2
+#define EN_3 (*((volatile unsigned long *)0x40004020)) //PIN A3
 
 
-#define EN_1 (*((volatile unsigned long *)0x40005008)) //PIN B1
-#define RS_0 (*((volatile unsigned long *)0x40005004)) //PIN B0
 
 #define GPIO_PORTB_DATA_R 	(*((volatile unsigned long *)0x400053FC))
 #define GPIO_PORTB_DIR_R 	(*((volatile unsigned long *)0x40005400))

@@ -18,7 +18,7 @@
 
 #include "timer.h"
 #include "pad.h"
-//#include "debug.h"
+#include "debug.h"
 #include "lcd.h"
 
 
@@ -48,6 +48,7 @@ int main(void) {
 				continue;
 			}
 			lcd_write_char(input);
+
 		}
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);
