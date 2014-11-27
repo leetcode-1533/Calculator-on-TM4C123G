@@ -39,16 +39,20 @@ int main(void) {
 	lcd_write_char(0x48);
 
 	int test = 0;
-	unsigned char input;
+	unsigned char input= 0;
 	while(1){
 		for(test=0;test<=8;test++){
-			input = pad_value();
-			if(input == 0){
-				test --;
+			if(pad_xvalue() != -1){
+				input = pad_value();
+				while(input == pad_value()){}
+			}
+			if(input == 0)
+			{
+				test--;
 				continue;
 			}
 			lcd_write_char(input);
-
+			input = 0;
 		}
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);
