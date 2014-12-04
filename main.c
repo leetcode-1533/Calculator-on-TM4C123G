@@ -20,41 +20,26 @@
 #include "pad.h"
 #include "debug.h"
 #include "lcd.h"
-
+//#include "algorithm.h"
+#include "stack.h"
 
 int main(void) {
 	control();
 	sys_init();
 
-	//ConfigureUART();
 	pad_init();
 	lcd_init();
 
-	lcd_write_com(0x20);
-	lcd_write_com(0x0E);
-	lcd_write_com(0x06);
+	int index = 0;
+	unsigned char input= 0;
+	char array[8] = "";
+	int mode = 0;
+	char temp_char;
+	int i;
+	struct node * head = init();
+	while(1){
+	}
 
 	lcd_write_com(0x01);
-	lcd_write_char(0x48);
-	lcd_write_char(0x48);
-
-	int test = 0;
-	unsigned char input= 0;
-	while(1){
-		for(test=0;test<=8;test++){
-			if(pad_xvalue() != -1){
-				input = pad_value();
-				while(input == pad_value()){}
-			}
-			if(input == 0)
-			{
-				test--;
-				continue;
-			}
-			lcd_write_char(input);
-			input = 0;
-		}
-		lcd_write_com(0x01);
-		lcd_write_com(0x02);
-	}
+	lcd_write_com(0x02);
 }

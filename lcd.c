@@ -59,6 +59,14 @@ void lcd_init(void){
 	en_pulse();
 	ms_delay(100);
 
+	lcd_write_com(0x20);
+	lcd_write_com(0x0E);
+	lcd_write_com(0x06);
+
+	lcd_write_com(0x01);
+	//lcd_write_char(0x48);
+	//lcd_write_char(0x48);
+
 }
 
 void lcd_write_com(unsigned long com){
