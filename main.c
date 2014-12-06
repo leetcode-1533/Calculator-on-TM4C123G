@@ -21,7 +21,7 @@
 #include "debug.h"
 #include "lcd.h"
 #include "stack.h"
-
+#inclu
 int main(void) {
 	control();
 	sys_init();
@@ -31,7 +31,6 @@ int main(void) {
 	pad_init();
 	lcd_init();
 
-
 	val container_buffer[stack_size] = {'0'};
 	struct buffer_stack con_buffer;
 	struct buffer_stack * buffer;
@@ -40,13 +39,17 @@ int main(void) {
 
     float result;
 
-	push('1',buffer);
+
+    lcd_write_char('c');
+    lcd_write_text("test",0,0);
+
+/*	push('1',buffer);
 	push('1',buffer);
 	push('+',buffer);
     push('3',buffer);
     push('3',buffer);
     push('/',buffer);
-    push('2',buffer);
+    push('2',buffer);*/
 
 
 /*	int test = 0;
@@ -68,8 +71,11 @@ int main(void) {
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);
 	}*/
-    result = eval(buffer);
-    while(1){}
+ //   result = eval(buffer);
+    while(1){
+
+
+    }
     return 0;
 
 }

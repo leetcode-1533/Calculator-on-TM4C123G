@@ -95,3 +95,15 @@ void lcd_write_char(unsigned long cha){
 
 	ms_delay(5);
 }
+
+void lcd_write_text(char * input, int row, int col){
+	int com_address = 0;
+	switch(row){
+	case 0: com_address = 0x80 + col; break;
+	case 1: com_address = 0xC0 + col; break;
+	}
+	lcd_write_com(com_address);
+	while(*input){
+		lcd_write_char(*input++);
+	}
+}
