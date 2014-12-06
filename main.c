@@ -26,9 +26,10 @@ int main(void) {
 	control();
 	sys_init();
 	int i;
+	int j;
 
 	pad_init();
-//	lcd_init();
+	lcd_init();
 
 
 	val container_buffer[stack_size] = {'0'};
@@ -40,8 +41,12 @@ int main(void) {
     float result;
 
 	push('1',buffer);
-	push('/',buffer);
+	push('1',buffer);
+	push('+',buffer);
     push('3',buffer);
+    push('3',buffer);
+    push('/',buffer);
+    push('2',buffer);
 
 
 /*	int test = 0;
