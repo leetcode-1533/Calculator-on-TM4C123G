@@ -93,7 +93,13 @@ float stack2val(struct buffer_stack * node){
 
 
 
-int construct_buffer(struct buffer_stack * stack_temp, struct buffer_stack * input,struct buffer_stack * flo){
+int construct_buffer(struct buffer_stack * input,struct buffer_stack * flo){
+
+	val stack_temp_container[stack_size];
+	struct buffer_stack stack_temp_con;
+	struct buffer_stack * stack_temp;
+	stack_temp = & stack_temp_con;
+	init(stack_temp_container,stack_temp);
 
     val temp;
 
@@ -147,7 +153,7 @@ float eval(struct buffer_stack * buffer){
     init(container_numb,numb);
 
     push('@',oper);
-    construct_buffer(numb,buffer,flo);
+    construct_buffer(buffer,flo);
 
     val inspector;
     int code;

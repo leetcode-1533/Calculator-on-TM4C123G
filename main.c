@@ -21,7 +21,8 @@
 #include "debug.h"
 #include "lcd.h"
 #include "stack.h"
-#inclu
+#include <stdio.h>
+
 int main(void) {
 	control();
 	sys_init();
@@ -38,18 +39,15 @@ int main(void) {
 	init(container_buffer,buffer);
 
     float result;
+    char output_buffer[100];
 
-
-    lcd_write_char('c');
-    lcd_write_text("test",0,0);
-
-/*	push('1',buffer);
+	push('1',buffer);
 	push('1',buffer);
 	push('+',buffer);
     push('3',buffer);
     push('3',buffer);
     push('/',buffer);
-    push('2',buffer);*/
+    push('2',buffer);
 
 
 /*	int test = 0;
@@ -71,7 +69,9 @@ int main(void) {
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);
 	}*/
- //   result = eval(buffer);
+    result = eval(buffer);
+    sprintf(output_buffer,"%f",result);
+    lcd_write_text(output_buffer,0,0);
     while(1){
 
 
