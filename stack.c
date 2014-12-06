@@ -71,13 +71,14 @@ float ten_pow(int num){
 		while(num--){
 			temp = temp *10;
 		}
+		return temp;
 	}
 	if(num < 0){
 		while(num++){
 			temp = temp*0.1;
 		}
+		return temp;
 	}
-	return temp;
 }
 
 float stack2val(struct buffer_stack * node){

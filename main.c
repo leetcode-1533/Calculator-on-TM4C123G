@@ -40,6 +40,7 @@ int main(void) {
     push('1',buffer);
     push('+',buffer);
     push('1',buffer);
+    push('1',buffer);
     push('/',buffer);
     push('3',buffer);
 
