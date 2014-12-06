@@ -66,12 +66,18 @@ int main(void) {
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);
 	}*/
+
+
     result = eval(buffer);
     float2buf(buffer,result,4);
-    lcd_write_buf(buffer,0,0);
+    lcd_write_buf(buffer,1,0);
+
+
+
     while(1){
 
     }
+
     return 0;
 
 }

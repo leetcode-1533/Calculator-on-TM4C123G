@@ -59,9 +59,9 @@ void lcd_init(void){
 	en_pulse();
 	ms_delay(100);
 
-	lcd_write_com(0x20);
-	lcd_write_com(0x0E);
-	lcd_write_com(0x06);
+	lcd_write_com(0x28);//Function Set
+	lcd_write_com(0x0F);//Display on/off
+	lcd_write_com(0x06);//Entry mode: Incremental
 
 	lcd_write_com(0x01);
 	//lcd_write_char(0x48);
