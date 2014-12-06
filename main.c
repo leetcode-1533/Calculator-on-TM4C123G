@@ -27,20 +27,23 @@ int main(void) {
 	sys_init();
 
 	pad_init();
-	lcd_init();
+//	lcd_init();
 
 
 	val container_buffer[stack_size] = {'0'};
 	struct buffer_stack con_buffer;
 	struct buffer_stack * buffer;
 	buffer = & con_buffer;
-
 	init(container_buffer,buffer);
 
-	push('c',buffer);
-	int t = head_loc(buffer);
+    float result;
 
-	int test = 0;
+	push('1',buffer);
+	push('/',buffer);
+    push('3',buffer);
+
+
+/*	int test = 0;
 	unsigned char input= 0;
 	while(1){
 		for(test=0;test<=8;test++){
@@ -58,5 +61,9 @@ int main(void) {
 		}
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);
-	}
+	}*/
+    result = eval(buffer);
+    while(1){}
+    return 0;
+
 }
