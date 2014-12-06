@@ -2,6 +2,7 @@
 .launches/
 .settings/
 Debug/
+Release/
 
 
 .ccsproject

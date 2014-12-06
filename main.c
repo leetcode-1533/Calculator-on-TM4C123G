@@ -25,6 +25,7 @@
 int main(void) {
 	control();
 	sys_init();
+	int i;
 
 	pad_init();
 //	lcd_init();
