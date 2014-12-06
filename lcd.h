@@ -58,6 +58,5 @@ void lcd_write_eight_com(unsigned long com);
 void lcd_write_char(unsigned long cha);
 void lcd_write_eight_char(unsigned long cha);
 
-void lcd_write_text(char * input, int row, int col);
 
 #endif /* LCD_H_ */

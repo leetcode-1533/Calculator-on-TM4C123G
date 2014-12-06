@@ -62,14 +62,19 @@ int encoder(val input){
 }
 
 
-int ten_pow(int num){
-	int temp = 1;
+float ten_pow(int num){
+	float temp = 1;
 	if(num == 0){
 		return 1;
 	}
-	else{
+	if(num > 0){
 		while(num--){
 			temp = temp *10;
+		}
+	}
+	if(num < 0){
+		while(num++){
+			temp = temp*0.1;
 		}
 	}
 	return temp;
@@ -201,6 +206,49 @@ float eval(struct buffer_stack * buffer){
     return temp_result;
 }
 
+int float2buf(struct buffer_stack * buffer, float re,int precision){
+	int flag = 0;
+
+	if(re < 0){
+		flag = 1;
+		re = -re;
+	}
+	int decval; // decimal value;
+	int intval; //integer value;
+	re = re + 5 * ten_pow(- precision - 1);
+	decval = (int)(re *(int)ten_pow(precision))%((int)ten_pow(precision));
+	while(decval > 0){
+		push((decval % 10+ '0') , buffer);
+		decval = decval / 10;
+	}
+	push('.',buffer);
+
+	intval = (int)re;
+	while(intval>0){
+		push((intval % 10 + '0') , buffer );
+		intval = intval / 10;
+	}
+	if(flag == 1){
+		push('-',buffer);
+	}
+	return 0;
+}
+
+void lcd_write_buf(struct buffer_stack * buffer, int row, int col){
+	int com_address = 0;
+	char temp_char;
+	val val_temp;
+	switch(row){
+		case 0: com_address = 0x80 + col; break;
+		case 1: com_address = 0xC0 + col; break;
+	}
+	lcd_write_com(com_address);
+	while(head_loc(buffer) != 0){
+		pop(&val_temp,buffer);
+		temp_char = (char)val_temp;
+		lcd_write_char(temp_char);
+	}
+}
 
 
 

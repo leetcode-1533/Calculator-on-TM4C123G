@@ -1,6 +1,8 @@
 #include <math.h>
 #define stack_size 20
 
+#include "lcd.h"
+
 //Priority codes
 #define NUM 1
 #define LOWEST 9
@@ -28,7 +30,7 @@ val peek(struct buffer_stack * node);
 
 int encoder(val input);
 
-int ten_pow(int num);
+float ten_pow(int num);
 
 float stack2val(struct buffer_stack * node);
 
@@ -38,6 +40,8 @@ float two_eval(val exp1, val para, val exp2);
 
 float eval(struct buffer_stack * buffer);
 
+int float2buf(struct buffer_stack * buffer, float re, int precision);
 
+void lcd_write_buf(struct buffer_stack * buffer, int row, int col);
 
 

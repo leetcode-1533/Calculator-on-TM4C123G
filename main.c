@@ -19,9 +19,7 @@
 #include "timer.h"
 #include "pad.h"
 #include "debug.h"
-#include "lcd.h"
 #include "stack.h"
-#include <stdio.h>
 
 int main(void) {
 	control();
@@ -39,15 +37,11 @@ int main(void) {
 	init(container_buffer,buffer);
 
     float result;
-    char output_buffer[100];
-
-	push('1',buffer);
-	push('1',buffer);
-	push('+',buffer);
-    push('3',buffer);
-    push('3',buffer);
+    push('1',buffer);
+    push('+',buffer);
+    push('1',buffer);
     push('/',buffer);
-    push('2',buffer);
+    push('3',buffer);
 
 
 /*	int test = 0;
@@ -70,10 +64,9 @@ int main(void) {
 		lcd_write_com(0x02);
 	}*/
     result = eval(buffer);
-    sprintf(output_buffer,"%f",result);
-    lcd_write_text(output_buffer,0,0);
+    float2buf(buffer,result,4);
+    lcd_write_buf(buffer,0,0);
     while(1){
-
 
     }
     return 0;
