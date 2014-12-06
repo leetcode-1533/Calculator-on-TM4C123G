@@ -208,28 +208,34 @@ float eval(struct buffer_stack * buffer){
 }
 
 int float2buf(struct buffer_stack * buffer, float re,int precision){
-	int flag = 0;
+	int minus_flag = 0;
+	int dec_flag = 0;
 
 	if(re < 0){
-		flag = 1;
+		minus_flag = 1;
 		re = -re;
 	}
 	int decval; // decimal value;
 	int intval; //integer value;
 	re = re + 5 * ten_pow(- precision - 1);
 	decval = (int)(re *(int)ten_pow(precision))%((int)ten_pow(precision));
+	if(decval != 0){
+		dec_flag = 1;
+	}
 	while(decval > 0){
 		push((decval % 10+ '0') , buffer);
 		decval = decval / 10;
 	}
-	push('.',buffer);
+	if(dec_flag == 1){
+		push('.',buffer);
+	}
 
 	intval = (int)re;
 	while(intval>0){
 		push((intval % 10 + '0') , buffer );
 		intval = intval / 10;
 	}
-	if(flag == 1){
+	if(minus_flag == 1){
 		push('-',buffer);
 	}
 	return 0;
