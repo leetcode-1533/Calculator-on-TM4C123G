@@ -63,6 +63,7 @@ int main(void) {
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);
 	}*/
+    lcd_test_char();
     int i=0;
     int flag = 0;
     unsigned char input = 0;

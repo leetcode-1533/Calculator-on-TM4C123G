@@ -96,3 +96,15 @@ void lcd_write_char(unsigned long cha){
 	ms_delay(5);
 }
 
+void lcd_test_char(void){
+	char table_year[8]={0x11,0x11,0x0A,0x1F,0x11,0x1B,0x15,0x1F};
+	lcd_write_com(0x40);
+	int i;
+	for(i=0;i<=7;i++)
+	{
+	lcd_write_char(table_year[i]);
+	}
+	lcd_write_com(0x80);
+	lcd_write_char(0);
+}
+
