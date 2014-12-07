@@ -21,7 +21,7 @@
 #include "debug.h"
 #include "stack.h"
 
-int main(void) {
+long main(void) {
 	control();
 	sys_init();
 
@@ -44,7 +44,7 @@ int main(void) {
     push('3',buffer);*/
 
 
-/*	int test = 0;
+/*	long test = 0;
 	unsigned char input= 0;
 	while(1){
 		for(test=0;test<=8;test++){
@@ -64,8 +64,8 @@ int main(void) {
 		lcd_write_com(0x02);
 	}*/
     lcd_test_char();
-    int i=0;
-    int flag = 1;
+    long i=0;
+    long flag = 1;
     unsigned char input = 0;
     val null_space;
     while(1){
@@ -106,8 +106,14 @@ int main(void) {
     		}
 
     		{
+    			if(encoder(input) != NUM && encoder(peek(buffer)) != NUM){ //Means it is operator
+    				i--;
+    				continue;
+    			}
+    			else{
     			push(input,buffer);
     			lcd_write_char(input);
+    			}
     		}
     		}
 
