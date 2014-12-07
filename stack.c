@@ -82,7 +82,6 @@ double ten_pow(int num){
 }
 
 double stack2val(struct buffer_stack * node){
-    int i = 0;
     double temp_sum = 0.0;
     val temp_elem;
     char char_temp;
@@ -218,7 +217,7 @@ int float2buf(struct buffer_stack * buffer, double re,int precision){
 	int decval; // decimal value;
 	int intval; //integer value;
 	re = re + 5 * ten_pow(- precision - 1);
-	decval = (int)(re *(int)ten_pow(precision))%((int)ten_pow(precision));
+	decval = (int)(re * (int)ten_pow(precision))%((int)ten_pow(precision));
 	if(decval != 0){
 		dec_flag = 1;
 	}
@@ -230,7 +229,7 @@ int float2buf(struct buffer_stack * buffer, double re,int precision){
 		push('.',buffer);
 	}
 
-	intval = (int)re;
+	intval = (long)re;
 	while(intval>0){
 		push((intval % 10 + '0') , buffer );
 		intval = intval / 10;
