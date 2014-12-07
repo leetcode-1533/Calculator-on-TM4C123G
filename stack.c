@@ -257,7 +257,10 @@ void lcd_write_buf(struct buffer_stack * buffer, int row, int col){
 	}
 }
 
-
+int reinit(struct buffer_stack * buffer){
+	buffer->head = buffer->base;
+	return 0;
+}
 
 
 

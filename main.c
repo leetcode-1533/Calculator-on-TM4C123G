@@ -24,8 +24,6 @@
 int main(void) {
 	control();
 	sys_init();
-	int i;
-	int j;
 
 	pad_init();
 	lcd_init();
@@ -35,16 +33,15 @@ int main(void) {
 	struct buffer_stack * buffer;
 	buffer = & con_buffer;
 	init(container_buffer,buffer);
-
     float result;
-    push('1',buffer);
+/*    push('1',buffer);
     push('+',buffer);
     push('1',buffer);
     push('1',buffer);
     push('1',buffer);
     push('*',buffer);
     push('3',buffer);
-    push('3',buffer);
+    push('3',buffer);*/
 
 
 /*	int test = 0;
@@ -66,17 +63,62 @@ int main(void) {
 		lcd_write_com(0x01);
 		lcd_write_com(0x02);
 	}*/
-
-
-    result = eval(buffer);
-    float2buf(buffer,result,4);
-    lcd_write_buf(buffer,1,0);
-
-
-
+    int i=0;
+    int flag = 0;
+    unsigned char input = 0;
+    val null_space;
     while(1){
+    	for(i=0; i<=15; i++){
+    		if(pad_xvalue() != -1){
+    			input = pad_value();
+    			while(input == pad_value()){}
+    		}
+    		else{
+    			i--;
+    			continue;
+    		}
+    		if(input == 0){
+    			i --;
+    			continue;
+    		}
+    		else{
+    		if(flag == 1){
+    			lcd_write_com(0x01); //clean screen
+    			lcd_write_com(0x02); //set ddram address to 0
+    			i = 0;
+    			flag = 0;
+    			reinit(buffer);
+    			continue;
+    		}
+    		if( input == 'd'){
+    			pop(&null_space,buffer);
+    			lcd_write_com(0x10);
+    			i --;
+    			continue;
+    		}
+    		if (input == '#'){
+    			result = eval(buffer);
+    			float2buf(buffer,result,4);
+    			lcd_write_buf(buffer,1,0);
+    			flag = 1;
+    			continue;
+    		}
+
+    		{
+    			push(input,buffer);
+    			lcd_write_char(input);
+    		}
+    		}
+
+    	}
+    	flag = 1;
 
     }
+/*
+    result = eval(buffer);
+    float2buf(buffer,result,4);
+    lcd_write_buf(buffer,1,0);*/
+
 
     return 0;
 

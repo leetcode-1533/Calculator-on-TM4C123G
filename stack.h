@@ -44,4 +44,5 @@ int float2buf(struct buffer_stack * buffer, float re, int precision);
 
 void lcd_write_buf(struct buffer_stack * buffer, int row, int col);
 
+int reinit(struct buffer_stack * buffer);
 
