@@ -65,7 +65,7 @@ int main(void) {
 	}*/
     lcd_test_char();
     int i=0;
-    int flag = 0;
+    int flag = 1;
     unsigned char input = 0;
     val null_space;
     while(1){

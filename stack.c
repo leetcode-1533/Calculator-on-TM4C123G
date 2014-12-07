@@ -1,7 +1,7 @@
 #include "stack.h"
 
 #include <stdio.h>
-
+#include <math.h>
 
 
 int init(val * con, struct buffer_stack * starter){
@@ -217,7 +217,8 @@ int float2buf(struct buffer_stack * buffer, double re,int precision){
 	int decval; // decimal value;
 	int intval; //integer value;
 	re = re + 5 * ten_pow(- precision - 1);
-	decval = (int)(re * (int)ten_pow(precision))%((int)ten_pow(precision));
+	//decval = (int)(re * (int)ten_pow(precision))%((int)ten_pow(precision));
+	decval = (int)fmod(re*(int)ten_pow(precision),ten_pow(precision));
 	if(decval != 0){
 		dec_flag = 1;
 	}
