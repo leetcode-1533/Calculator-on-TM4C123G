@@ -62,8 +62,8 @@ int encoder(val input){
 }
 
 
-float ten_pow(int num){
-	float temp = 1;
+double ten_pow(int num){
+	double temp = 1;
 	if(num == 0){
 		return 1;
 	}
@@ -81,18 +81,18 @@ float ten_pow(int num){
 	}
 }
 
-float stack2val(struct buffer_stack * node){
+double stack2val(struct buffer_stack * node){
     int i = 0;
-    float temp_sum = 0.0;
+    double temp_sum = 0.0;
     val temp_elem;
     char char_temp;
-    float float_temp;
+    double float_temp;
     while(head_loc(node) != 0){
         pop(&temp_elem, node);
         char_temp = (char)temp_elem;
         char_temp -= '0';
         float_temp = char_temp + 0.0;
-        temp_sum += float_temp*ten_pow(i++);
+        temp_sum += float_temp*ten_pow(head_loc(node));
     }
     return temp_sum;
 }
@@ -123,7 +123,7 @@ int construct_buffer(struct buffer_stack * input,struct buffer_stack * flo){
     return 0;
 }
 
-float two_eval(val exp1, val para, val exp2){
+double two_eval(val exp1, val para, val exp2){
 
     char code = (char) para;
     switch(code){
@@ -136,7 +136,7 @@ float two_eval(val exp1, val para, val exp2){
     }
 }
 
-float eval(struct buffer_stack * buffer){
+double eval(struct buffer_stack * buffer){
 
     val flo_container[stack_size] = {0};
     struct buffer_stack  flo_con;
@@ -167,7 +167,7 @@ float eval(struct buffer_stack * buffer){
     val para;
     val exp2;
 
-    float temp_result;
+    double temp_result;
 
     do{
       //temp_debug(buffer);
@@ -207,7 +207,7 @@ float eval(struct buffer_stack * buffer){
     return temp_result;
 }
 
-int float2buf(struct buffer_stack * buffer, float re,int precision){
+int float2buf(struct buffer_stack * buffer, double re,int precision){
 	int minus_flag = 0;
 	int dec_flag = 0;
 

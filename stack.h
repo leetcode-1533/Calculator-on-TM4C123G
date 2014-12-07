@@ -9,7 +9,7 @@
 #define MIDDLE 10
 #define HIGHEST 11
 
-typedef float val;
+typedef double val;
 
 
 struct buffer_stack{
@@ -30,17 +30,17 @@ val peek(struct buffer_stack * node);
 
 int encoder(val input);
 
-float ten_pow(int num);
+double ten_pow(int num);
 
-float stack2val(struct buffer_stack * node);
+double stack2val(struct buffer_stack * node);
 
 int contruct_buffer(struct buffer_stack * stack_temp, struct buffer_stack * input, struct buffer_stack * flo );
 
-float two_eval(val exp1, val para, val exp2);
+double two_eval(val exp1, val para, val exp2);
 
-float eval(struct buffer_stack * buffer);
+double eval(struct buffer_stack * buffer);
 
-int float2buf(struct buffer_stack * buffer, float re, int precision);
+int float2buf(struct buffer_stack * buffer, double re, int precision);
 
 void lcd_write_buf(struct buffer_stack * buffer, int row, int col);
 
