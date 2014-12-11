@@ -21,12 +21,14 @@
 #include "debug.h"
 #include "stack.h"
 
-long main(void) {
+;long main(void) {
 	control();
 	sys_init();
 
 	pad_init();
 	lcd_init();
+
+	//lcd_write_char('a');
 
 	val container_buffer[stack_size] = {'0'};
 	struct buffer_stack con_buffer;
@@ -98,6 +100,10 @@ long main(void) {
     			continue;
     		}
     		if (input == '#'){
+    			if(encoder(peek(buffer)) != NUM){
+    				i --;
+    				continue;
+    			}
     			result = eval(buffer);
     			float2buf(buffer,result,4);
     			lcd_write_buf(buffer,1,0);
