@@ -33,7 +33,7 @@ long main(void) {
 	struct buffer_stack * buffer;
 	buffer = & con_buffer;
 	init(container_buffer,buffer);
-    float result;
+    double result;
 /*    push('1',buffer);
     push('+',buffer);
     push('1',buffer);

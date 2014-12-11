@@ -214,8 +214,8 @@ int float2buf(struct buffer_stack * buffer, double re,int precision){
 		minus_flag = 1;
 		re = -re;
 	}
-	int decval; // decimal value;
-	int intval; //integer value;
+	long long int decval; // decimal value;
+	long long int intval; //integer value;
 	re = re + 5 * ten_pow(- precision - 1);
 	//decval = (int)(re * (int)ten_pow(precision))%((int)ten_pow(precision));
 	decval = (int)fmod(re*(int)ten_pow(precision),ten_pow(precision));
@@ -230,7 +230,7 @@ int float2buf(struct buffer_stack * buffer, double re,int precision){
 		push('.',buffer);
 	}
 
-	intval = (long)re;
+	intval = (long long int)re;
 	while(intval>0){
 		push((intval % 10 + '0') , buffer );
 		intval = intval / 10;
